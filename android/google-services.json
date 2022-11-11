@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "329806922790",
+    "project_id": "porocci-app-7ae2c",
+    "storage_bucket": "porocci-app-7ae2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329806922790:android:a2ee487ddd3492ad6952e7",
+        "android_client_info": {
+          "package_name": "com.example.porocci_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329806922790-fpfmdhpv5hgl056nhbsqfjeauvfq0k01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Y4GqTPv-Wze8L-lcO_ufQ0Vs45y6k2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329806922790-fpfmdhpv5hgl056nhbsqfjeauvfq0k01.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "329806922790-3aqftlu7ktf6h9o4ell32kc7fp22iv88.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.porocciApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
