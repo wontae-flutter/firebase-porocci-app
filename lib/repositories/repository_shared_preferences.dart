@@ -11,6 +11,7 @@ class SharedPrefRepository {
     required this.ref,
   });
 
+  //! 밑에 await를 쓰지 않아도 되면 퍼펙트한데...
   Future<bool> getIsAutoLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // 여기에 만들어봅시다.

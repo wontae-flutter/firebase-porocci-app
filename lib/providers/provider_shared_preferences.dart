@@ -21,4 +21,10 @@ import '../repositories/repository_shared_preferences.dart';
 final sharedPrefRepositoryProvider =
     Provider((ref) => SharedPrefRepository(ref: ref));
 //* 기본값
-final isAutoLoginProvider = StateProvider<bool>((ref) => false);
+
+// 이거바꿀수있음?
+final isAutoLoginProvider = FutureProvider((ref) async {
+  final sharedPrefRepository = ref.watch(sharedPrefRepositoryProvider);
+  final isAutoLogin = await sharedPrefRepository.getIsAutoLogin();
+  return isAutoLogin;
+});

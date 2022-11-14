@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             children: const <Widget>[
               LoginEmailInput(),
               LoginPasswordInput(),
-              AutoLoginBox(),
+              // AutoLoginBox(),
               LoginButton(),
               MoveToRegisterPageButton(),
             ],
@@ -76,40 +76,91 @@ class LoginPasswordInput extends ConsumerWidget {
   }
 }
 
-class AutoLoginBox extends ConsumerStatefulWidget {
-  const AutoLoginBox({super.key});
+// class AutoLoginBox extends StatefulWidget {
+//   const AutoLoginBox({super.key});
 
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AutoLoginBoxState();
-}
+//   @override
+//   State<AutoLoginBox> createState() => _AutoLoginBoxState();
+// }
 
-class _AutoLoginBoxState extends ConsumerState<AutoLoginBox> {
-  @override
-  Widget build(BuildContext context) {
-    final sharedPrefRepository = ref.watch(sharedPrefRepositoryProvider);
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-          width: 15,
-          child: Checkbox(
-            checkColor: Colors.white,
-            //* value에 watch를 달면 되는구나
-            value: ref.watch(isAutoLoginProvider),
-            onChanged: (value) async {
-              ref.read(isAutoLoginProvider.notifier).state = value!;
-              await sharedPrefRepository
-                  .setIsAutoLogin(ref.read(isAutoLoginProvider.notifier).state);
-              print(ref.read(isAutoLoginProvider.notifier).state);
-            },
-          ),
-        ),
-        SizedBox(width: 10),
-        Text("로그인 유지하기")
-      ],
-    );
-  }
-}
+// class _AutoLoginBoxState extends State<AutoLoginBox> {
+//   late SharedPreferences _prefs;
+//   // late Future<bool> isAutoLogin;
+//   late bool isAutoLogin;
+
+//   // Future<bool> getIsAutoLogin() async {
+//   //   final SharedPreferences prefs = await _prefs;
+//   //   // final bool isAutoLogin = prefs.getBool("isAutoLogin") ?? false;
+//   //   // isAutoLogin = prefs.getBool('isAutoLogin');
+//   //   // return isAutoLogin;
+//   //   };
+//   // }
+//   // Future<bool> getIsAutoLogin() async {
+//   //   final SharedPreferences prefs = await _prefs;
+//   //   isAutoLogin = prefs.getBool('isAutoLogin');
+//   //   return isAutoLogin;
+//   // }
+
+//   // Future<void> setIsAutoLogin(value) async {
+//   //   final SharedPreferences prefs = await _prefs;
+//   //   // final bool isAutoLogin = prefs.getBool("isAutoLogin") ?? false;
+
+//   //   setState(() {
+//   //     isAutoLogin = prefs.setBool('isAutoLogin', value).then((bool success) {
+//   //       return value;
+//   //     });
+//   //   });
+//   // }
+//   //! 삽질
+//   @override
+//   void initState() {
+//     super.initState();
+//     getSharePrefs();
+//     // isAutoLogin = _prefs.then((SharedPreferences prefs) {
+//     //   return prefs.getBool('isAutoLogin') ?? false;
+//     // });
+//     // isAutoLogin = _prefs.getBool('isAutoLogin') ?? false;
+//   }
+
+//   Future<void> getSharePrefs() async {
+//     _prefs = await SharedPreferences.getInstance();
+//   }
+
+//   @override
+//   //! 결국은 퓨처빌더를 써야...
+
+//   Widget build(BuildContext context) {
+//     // isAutoLogin = _prefs.getBool('isAutoLogin') ?? false;
+//     return Row(
+//       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [
+//         SizedBox(
+//           width: 15,
+//           child: Checkbox(
+//             checkColor: Colors.white,
+//             //* value에 watch를 달면 되는구나
+//             value: isAutoLogin,
+//             onChanged: (value) {
+//               // ref.read(isAutoLoginProvider).value = value;
+//               // setState(() {
+//               //   isAutologin = !value!;
+//               // });
+//               // await sharedPrefRepository.setIsAutoLogin(!value!);
+//               // print(ref.read(isAutoLoginProvider.notifier).state);
+//               isAutoLogin = !value!;
+//             },
+//           ),
+//         ),
+//         SizedBox(width: 10),
+//         Text("로그인 유지하기")
+//       ],
+//     );
+//   }
+// }
+
+//! sharedProvider는 전역에 하나만 생성되니까 provider를 쓰는게 아니다
+//! stf의 initstate에서 어떻게 불러와서 쓸 것인지가 중요하지...
+// 삽질하고 있었다
 
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key});
