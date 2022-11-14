@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:porocci_app/tabs/tabs.dart';
 import '../providers/provider_shared_preferences.dart';
 
-class IndexScreen extends ConsumerStatefulWidget {
-  const IndexScreen({super.key});
+class HomeScreen extends ConsumerStatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _IndexScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
-class _IndexScreenState extends ConsumerState<IndexScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _currentTabIndex = 0;
   final List<Widget> _tabs = [
     HomeTab(),
