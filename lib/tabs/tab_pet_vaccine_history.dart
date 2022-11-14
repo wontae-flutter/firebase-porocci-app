@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import "../providers/provider_auth.dart";
 
 //! 일단은 로그아웃 기능만!
-class Settings extends ConsumerWidget {
-  const Settings({super.key});
+class PetVaccineHistoryTab extends ConsumerWidget {
+  const PetVaccineHistoryTab({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

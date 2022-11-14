@@ -12,15 +12,11 @@ import './screens/screens.dart';
 Future<void> main() async {
   //! sharedPreferences처럼 객체가 Future일 때 futureProvider를 사용하기 싫을 때
 
-  // final sharedPrefs = await SharedPreferences.getInstance();
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
 
   runApp(
     ProviderScope(
-      // overrides: [
-      //   sharedPreferences.overrideWithValue(sharedPrefs),
-      // ],
       child: MyApp(),
     ),
   );

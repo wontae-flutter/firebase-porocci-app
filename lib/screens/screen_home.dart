@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/provider_shared_preferences.dart';
+
+// import '../providers/provider_shared_preferences.dart';
+import '../styles/styles.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -25,7 +27,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onPressed: () {},
               icon: Icon(IconData(0xf237, fontFamily: 'MaterialIcons'))),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //! 여기도 분화되는 로직이 있어야 함
+            },
             icon: isLogin
                 ? Icon(IconData(0xe3b2,
                     fontFamily: 'MaterialIcons')) //* Login Icon
@@ -35,52 +39,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ],
       ),
       extendBodyBehindAppBar: true, //* body위에 appbar
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              HeroImage(),
-              Positioned(
-                bottom: 5,
-                right: 5,
-                child: HeroImageEditButton(),
-              )
-            ],
-          ),
-          HomeArea(),
-        ],
+      body: Container(
+        color: ColorTheme.homeScreenBackgroundColor,
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                HeroImage(),
+                Positioned(
+                  bottom: 20,
+                  right: 5,
+                  child: HeroImageEditButton(),
+                )
+              ],
+            ),
+            Expanded(
+              child: Transform.translate(
+                offset: const Offset(0, -30),
+                child: HomeArea(),
+              ),
+            ),
+          ],
+        ),
       ),
-      //   body: Stack(
-      //     children: [
-      //       Container(
-      //         // height: double.infinity,
-      //         // height: MediaQuery.of(context).size.height * 0.,
-      //         child: Image.asset(
-      //           // height: MediaQuery.of(context).size.height * 0.5,
-      //           "assets/images/hero/dog.jpeg",
-      //           fit: BoxFit.fill,
-      //         ),
-      //       ),
-      //       Positioned(
-      //         top: MediaQuery.of(context).size.height * 0.35,
-      //         //* clip이랑 Container랑 바뀐꺼같음
-      //         child: Container(
-      //           width: MediaQuery.of(context).size.width,
-      //           height: MediaQuery.of(context).size.height * 0.55,
-      //           child: Text("Hoi"),
-      //           color: Colors.red,
-      //         ),
-      //         // child: ClipRRect(
-      //         //   borderRadius: BorderRadius.vertical(top: Radius.circular(6)),
-      //         //   child: Container(
-      //         //     width: MediaQuery.of(context).size.width,
-      //         //     child: Text("Hoi"),
-      //         //     color: Colors.red,
-      //         //   ),
-      //         // ),
-      //       )
-      //     ],
-      //   ),
     );
   }
 }
@@ -126,24 +107,22 @@ class HomeArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black12,
+        color: ColorTheme.homeScreenBackgroundColor,
+        // backgroundBlendMode: ,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40.0),
           topRight: Radius.circular(40.0),
         ),
       ),
-      padding: EdgeInsets.fromLTRB(30, 50, 30, 20),
+      padding: EdgeInsets.fromLTRB(30, 50, 30, 40),
       child: Column(
         children: [
           QRContainer(),
           SizedBox(height: 30),
-          Stack(
-            children: [
-              PetRegisterTitle(),
-              Positioned(
-                child: PetRegister(),
-              )
-            ],
+          PetRegisterTitle(),
+          SizedBox(height: 10),
+          Expanded(
+            child: PetRegisterContainer(),
           )
         ],
       ),
@@ -198,30 +177,32 @@ class PetRegisterTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Icon(
-          Icons.pets,
-          size: 50,
-        ),
-        SizedBox(width: 10),
-        Text(
-          "반려동물 등록",
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
-        ),
-      ],
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.pets,
+            size: 50,
+          ),
+          SizedBox(width: 10),
+          Text(
+            "반려동물 등록",
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+          ),
+        ],
+      ),
     );
   }
 }
 
-class PetRegister extends StatelessWidget {
-  const PetRegister({super.key});
+class PetRegisterContainer extends StatelessWidget {
+  const PetRegisterContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(80, 30, 80, 10),
+      padding: EdgeInsets.fromLTRB(80, 30, 80, 30),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -234,20 +215,24 @@ class PetRegister extends StatelessWidget {
                 offset: Offset(2.0, 2.0)), // shadow direction: bottom right),
           ]),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(
             IconData(0xee3c, fontFamily: 'MaterialIcons'),
-            size: 60,
+            size: 70,
             color: Colors.black38,
           ),
           Text(
-            "+ 포로치 등록하기",
-            style: TextStyle(),
+            "포로치 등록하기",
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           ),
-          SizedBox(height: 5),
+          // SizedBox(height: 10),
+
+          //todo text.rich로 나눠서 해줘야해?
           Text(
-            "포로치의 반려동물 등록번호를 연동시켜주세요.",
-            style: TextStyle(),
+            "포로치의 반려동물 \n 등록번호를 연동시켜주세요.",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black54, fontSize: 18),
           ),
         ],
       ),
