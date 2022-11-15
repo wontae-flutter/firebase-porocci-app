@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-// import '../providers/provider_shared_preferences.dart';
+import '../providers/provider_auth.dart';
 import '../styles/styles.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -12,12 +13,35 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  bool isLogin = false;
+  bool? isLogin;
 
+  //! login여부가 prefs에 들어가있으니 initState때마다 가져와서 확인해야함
+  @override
+  void initState() {
+    print("rebuilding homescreen");
+    super.initState();
+    checkLogin2().then((_isLogin) {
+      isLogin = _isLogin;
+    });
+
+    //* how to set an undecided value in initState
+  }
+
+  Future<bool> checkLogin2() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLogin = prefs.getBool("isLogin") ?? false;
+
+    return isLogin;
+  }
+
+  //todo 만날때마다 로그인 바꾸는 법...
+  //! 나갈때 dispose를 해줘야 오류가 안 생기나봐요.
   @override
   Widget build(BuildContext context) {
     // final sharedPrefRepository = ref.watch(sharedPrefRepositoryProvider);
     //* 유저 로그인해서 마이페이지 or 로그인 해야함
+    // final loginStatus = ref.watch(loginStatusProvider);
+    // print("isLogin at HomeScreen: $isLogin");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -28,14 +52,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               icon: Icon(IconData(0xf237, fontFamily: 'MaterialIcons'))),
           IconButton(
             onPressed: () {
-              //! 여기도 분화되는 로직이 있어야 함
+              isLogin == true
+                  ? Navigator.of(context).pushNamed("/user_page")
+                  : Navigator.of(context).pushNamed("/login");
             },
-            icon: isLogin
-                ? Icon(IconData(0xe3b2,
-                    fontFamily: 'MaterialIcons')) //* Login Icon
-                : Icon(IconData(0xee35,
-                    fontFamily: 'MaterialIcons')), //* User Icon
-          ),
+            icon: isLogin == true
+                ? Icon(
+                    IconData(0xee35, fontFamily: 'MaterialIcons')) //* User Icon
+                : Icon(IconData(0xe3b2,
+                    fontFamily: 'MaterialIcons')), //* Login Icon
+          )
         ],
       ),
       extendBodyBehindAppBar: true, //* body위에 appbar
@@ -73,7 +99,7 @@ class HeroImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       height: MediaQuery.of(context).size.height * 0.4,
-      "assets/images/hero/dog.jpeg",
+      "assets/images/hero/dog3.jpeg",
       fit: BoxFit.cover,
     );
   }
@@ -108,7 +134,6 @@ class HomeArea extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: ColorTheme.homeScreenBackgroundColor,
-        // backgroundBlendMode: ,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40.0),
           topRight: Radius.circular(40.0),
@@ -227,8 +252,6 @@ class PetRegisterContainer extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           ),
           // SizedBox(height: 10),
-
-          //todo text.rich로 나눠서 해줘야해?
           Text(
             "포로치의 반려동물 \n 등록번호를 연동시켜주세요.",
             textAlign: TextAlign.center,

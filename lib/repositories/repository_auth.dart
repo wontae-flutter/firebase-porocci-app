@@ -28,10 +28,10 @@ class AuthRepository {
       UserCredential credential = await authClient
           .createUserWithEmailAndPassword(email: email, password: password);
       //* 회원가입하고 따로 받아오는게 없습니다.
-      return AuthStatus.registerSuccess;
+      return AuthStatus.registered;
     } catch (e) {
       print(e);
-      return AuthStatus.registerFail;
+      return AuthStatus.notRegistered;
     }
   }
 
@@ -49,10 +49,10 @@ class AuthRepository {
         prefs.setString('password', password);
       });
       print("[+] 로그인유저 : " + user!.email.toString());
-      return AuthStatus.loginSuccess;
+      return AuthStatus.loggedIn;
     } catch (e) {
       print(e);
-      return AuthStatus.loginFail;
+      return AuthStatus.notLoggedIn;
     }
   }
 

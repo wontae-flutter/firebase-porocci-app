@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:porocci_app/enums/enum_auth_status.dart';
 
+import "../enums/enum_auth_status.dart";
 import "../providers/provider_auth.dart";
 
 class RegisterScreen extends ConsumerWidget {
@@ -122,7 +122,7 @@ class RegisterButton extends ConsumerWidget {
           await authRepository
               .registerWithEmail(registerEmail, registerPassword)
               .then((registerStatus) {
-            if (registerStatus == AuthStatus.registerSuccess) {
+            if (registerStatus == AuthStatus.registered) {
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(SnackBar(content: Text("회원가입이 완료되었습니다.")));

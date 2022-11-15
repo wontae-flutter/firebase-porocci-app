@@ -1,7 +1,6 @@
 //* 요기도 이름/순서에 따라 해보자
 export "screen_splash.dart";
 
-export "screen_splash2.dart";
 export 'screen_home.dart';
 
 export "screen_qr.dart";

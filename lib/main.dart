@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:porocci_app/screens/screen_splash2.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 import './screens/screens.dart';
@@ -35,10 +34,11 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       routes: {
-        "/": (context) => const SplashScreen2(),
+        "/": (context) => const SplashScreen(),
         "/home": (context) => const HomeScreen(),
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterScreen(),
+        "/user_page": (context) => const UserPageScreen(),
       },
     );
   }

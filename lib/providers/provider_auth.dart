@@ -13,7 +13,8 @@ import "../repositories/repository_auth.dart";
 final authRepositoryProvider = Provider((ref) => AuthRepository(ref: ref));
 
 //? 어짜피 authRepositoryProvider의 메소드에서 .then으로 status를 받아버리니까
-//? 따로 만들어서 필요하진 않음
+//? 따로 만들어서 필요하진 않음? 정말?
+//todo isLogin을 보려면 봐야하지 않을까? 그런데...
 final loginStatusProvider = FutureProvider.autoDispose
     //! {email:email, password:password} 형태로 받아야 합니다.
     //! AuthInput타입을 만들어야하겠네요.
