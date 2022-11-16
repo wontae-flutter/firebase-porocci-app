@@ -39,6 +39,8 @@ class MyApp extends StatelessWidget {
         "/login": (context) => const LoginScreen(),
         "/register": (context) => const RegisterScreen(),
         "/user_page": (context) => const UserPageScreen(),
+        //! 각각 펫아이디에 해줘야하는데, 요거는 넘버링하지않고 유저아이디 + 펫아이디가 합쳐져있어야 할 것 같아요.
+        "/pet_tabs": (context) => const PetTabsScreen(),
       },
     );
   }

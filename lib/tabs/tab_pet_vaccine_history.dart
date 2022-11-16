@@ -11,7 +11,7 @@ class PetVaccineHistoryTab extends ConsumerWidget {
       child: Container(
         child: Column(
           children: [
-            Text("Profile"),
+            Text("pet_vaccine_history"),
           ],
         ),
       ),

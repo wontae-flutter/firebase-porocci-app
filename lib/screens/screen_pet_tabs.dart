@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import '../tabs/tabs_pet.dart';
 
-class PetProfileScreen extends StatefulWidget {
-  const PetProfileScreen({super.key});
+class PetTabsScreen extends StatefulWidget {
+  const PetTabsScreen({super.key});
 
   @override
-  State<PetProfileScreen> createState() => _PetProfileScreenState();
+  State<PetTabsScreen> createState() => _PetTabsScreenState();
 }
 
-class _PetProfileScreenState extends State<PetProfileScreen> {
+class _PetTabsScreenState extends State<PetTabsScreen>
+    with SingleTickerProviderStateMixin {
+  TabController? _tabController;
   int _currentTabIndex = 0;
 
   final List<Widget> _tabs_pet = [
@@ -18,15 +20,30 @@ class _PetProfileScreenState extends State<PetProfileScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _tabs_pet.length, vsync: this);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("pet name"),
-        bottom: TabBar(
-          tabs: _tabs_pet,
-        ),
+        bottom: TabBar(controller: _tabController, tabs: [
+          Tab(
+            text: "홈",
+          ),
+          Tab(
+            text: "리포트",
+          ),
+          Tab(
+            text: "접종관리",
+          ),
+        ]),
       ),
       body: TabBarView(
+        controller: _tabController,
         children: _tabs_pet,
       ),
     );

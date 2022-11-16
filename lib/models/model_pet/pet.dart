@@ -31,6 +31,12 @@ class Pet with _$Pet {
     required String sex,
     required String birthdate,
     required int registernumber,
+
+    //* 중성화, 옵셔널
+    @Default(false) bool isNeutered,
+    @Default([""]) List<String> allergies,
+    @Default("") String remarks,
+    //* 알러지
     DocumentReference? reference,
   }) = _Pet;
 
@@ -46,6 +52,8 @@ class Pet with _$Pet {
       sex: map['sex'],
       birthdate: map['birthdate'],
       registernumber: map['registernumber'],
+      isNeutered: map['isNeutered'],
+      allergies: map['allergies'],
       reference: document.reference,
     );
   }

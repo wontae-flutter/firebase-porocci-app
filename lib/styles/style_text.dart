@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class TextTheme {
+abstract class AppText {
   static const TextStyle progressHeader = TextStyle(
       color: Colors.black,
       fontSize: 40,

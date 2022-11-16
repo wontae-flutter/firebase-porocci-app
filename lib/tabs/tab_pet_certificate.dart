@@ -7,7 +7,7 @@ class PetCertificateTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Container(
-        child: Text("pet"),
+        child: Text("pet_certificate"),
       ),
     );
   }

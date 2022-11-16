@@ -12,27 +12,46 @@ import "../repositories/repository_auth.dart";
 
 final authRepositoryProvider = Provider((ref) => AuthRepository(ref: ref));
 
+//! 역시 내가 생각했던게 맞았어
+
+// final authStateProvider =
+//     StateNotifierProvider<AuthRepository, AuthStatus>((ref) {
+//   final authService = ref.watch(authRepositoryProvider);
+//   return authService;
+// });
+
 //? 어짜피 authRepositoryProvider의 메소드에서 .then으로 status를 받아버리니까
 //? 따로 만들어서 필요하진 않음? 정말?
 //todo isLogin을 보려면 봐야하지 않을까? 그런데...
-final loginStatusProvider = FutureProvider.autoDispose
-    //! {email:email, password:password} 형태로 받아야 합니다.
-    //! AuthInput타입을 만들어야하겠네요.
-    // family<리턴타입, 파라미터타입>
-    .family<AuthStatus, LoginField>((ref, loginField) async {
-  final authRepository = ref.watch(authRepositoryProvider);
-  final loginStatus = await authRepository.loginWithEmail(
-      loginField.email, loginField.password);
-  return loginStatus;
-});
+// final loginStatusProvider = FutureProvider.autoDispose
+//     //! {email:email, password:password} 형태로 받아야 합니다.
+//     //! AuthInput타입을 만들어야하겠네요.
+//     // family<리턴타입, 파라미터타입>
+//     .family<AuthStatus, LoginField>((ref, loginField) async {
+//   final authRepository = ref.watch(authRepositoryProvider);
+//   final loginStatus = await authRepository.loginWithEmail(
+//       loginField.email, loginField.password);
+//   return loginStatus;
+// });
 
-final registerStatusProvider = FutureProvider.autoDispose
-    .family<AuthStatus, LoginField>((ref, loginField) async {
-  final authRepository = ref.watch(authRepositoryProvider);
-  final loginStatus = await authRepository.loginWithEmail(
-      loginField.email, loginField.password);
-  return loginStatus;
-});
+// final registerStatusProvider = FutureProvider.autoDispose
+//     .family<AuthStatus, LoginField>((ref, loginField) async {
+//   final authRepository = ref.watch(authRepositoryProvider);
+//   final loginStatus = await authRepository.loginWithEmail(
+//       loginField.email, loginField.password);
+//   return loginStatus;
+// });
+
+//todo authRepo의 property를 직접 가져오는 방식, prefs 못해먹겠어요 시발
+// final loginStatusProvider = Provider((ref) {
+//   AuthStatus loginStatus = ref.watch(authRepositoryProvider).loginStatus;
+//   return loginStatus;
+// });
+
+// final registerStatusProvider = Provider((ref) {
+//   AuthStatus registerStatus = ref.watch(authRepositoryProvider).registereStatus;
+//   return registerStatus;
+// });
 
 //! 각 property(=getter)와 setter를 가져오는 방법!
 final loginFieldNotifierProvider =

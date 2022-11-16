@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../enums/enum_auth_status.dart';
 import '../providers/provider_auth.dart';
 import '../styles/styles.dart';
 
@@ -13,32 +14,14 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  bool? isLogin;
-
-  //! login여부가 prefs에 들어가있으니 initState때마다 가져와서 확인해야함
-  @override
-  void initState() {
-    print("rebuilding homescreen");
-    super.initState();
-    checkLogin2().then((_isLogin) {
-      isLogin = _isLogin;
-    });
-
-    //* how to set an undecided value in initState
-  }
-
-  Future<bool> checkLogin2() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLogin = prefs.getBool("isLogin") ?? false;
-
-    return isLogin;
-  }
-
-  //todo 만날때마다 로그인 바꾸는 법...
-  //! 나갈때 dispose를 해줘야 오류가 안 생기나봐요.
   @override
   Widget build(BuildContext context) {
-    // final sharedPrefRepository = ref.watch(sharedPrefRepositoryProvider);
+    //! final userPets = ref.watch(userPetsProvider);
+    //! 요거는 리스트로 만들기 쉽다...
+    // final loginStatus = ref.watch(loginStatusProvider);
+    // 안되는 ㅜㅜ
+
+    // print("loginStatus: $loginStatus");
     //* 유저 로그인해서 마이페이지 or 로그인 해야함
     // final loginStatus = ref.watch(loginStatusProvider);
     // print("isLogin at HomeScreen: $isLogin");
@@ -50,23 +33,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           IconButton(
               onPressed: () {},
               icon: Icon(IconData(0xf237, fontFamily: 'MaterialIcons'))),
-          IconButton(
-            onPressed: () {
-              isLogin == true
-                  ? Navigator.of(context).pushNamed("/user_page")
-                  : Navigator.of(context).pushNamed("/login");
-            },
-            icon: isLogin == true
-                ? Icon(
-                    IconData(0xee35, fontFamily: 'MaterialIcons')) //* User Icon
-                : Icon(IconData(0xe3b2,
-                    fontFamily: 'MaterialIcons')), //* Login Icon
-          )
+          // IconButton(
+          //   onPressed: () {
+          //     loginStatus == AuthStatus.loggedIn
+          //         ? Navigator.of(context).pushNamed("/user_page")
+          //         : Navigator.of(context).pushNamed("/login");
+          //   },
+          //   icon: loginStatus == AuthStatus.loggedIn
+          //       ? Icon(
+          //           IconData(0xee35, fontFamily: 'MaterialIcons')) //* User Icon
+          //       : Icon(IconData(0xe3b2,
+          //           fontFamily: 'MaterialIcons')), //* Login Icon
+          // )
         ],
       ),
       extendBodyBehindAppBar: true, //* body위에 appbar
       body: Container(
-        color: ColorTheme.homeScreenBackgroundColor,
+        color: AppColor.homeScreenBackgroundColor,
         child: Column(
           children: [
             Stack(
@@ -133,7 +116,7 @@ class HomeArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorTheme.homeScreenBackgroundColor,
+        color: AppColor.homeScreenBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40.0),
           topRight: Radius.circular(40.0),
@@ -256,6 +239,12 @@ class PetRegisterContainer extends StatelessWidget {
             "포로치의 반려동물 \n 등록번호를 연동시켜주세요.",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.black54, fontSize: 18),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/pet_tabs");
+            },
+            child: Text("펫 프로필"),
           ),
         ],
       ),
