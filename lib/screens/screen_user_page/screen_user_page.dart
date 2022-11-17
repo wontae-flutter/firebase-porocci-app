@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import "../providers/provider_auth.dart";
+import '../../providers/provider_auth.dart';
+
+import './widgets/widgets.dart';
 
 class UserPageScreen extends ConsumerWidget {
   const UserPageScreen({super.key});

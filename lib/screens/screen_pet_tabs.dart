@@ -35,10 +35,7 @@ class _PetTabsScreenState extends State<PetTabsScreen>
         elevation: 0.0,
         titleSpacing: 0,
         title: Text("펫 프로필"),
-        actions: [
-          Padding(
-              padding: EdgeInsets.only(right: 20), child: Icon(Icons.settings)),
-        ],
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.settings))],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
           child: Column(
@@ -75,29 +72,3 @@ class _PetTabsScreenState extends State<PetTabsScreen>
     );
   }
 }
-
-
-//  bottomNavigationBar: BottomNavigationBar(
-//         type: BottomNavigationBarType.fixed,
-//         iconSize: 30,
-//         selectedItemColor: Colors.blue,
-//         unselectedItemColor: Colors.grey,
-//         currentIndex: _currentTabIndex,
-//         selectedLabelStyle: TextStyle(fontSize: 12),
-//         onTap: (index) async {
-//           print(await sharedPrefRepository.getIsAutoLogin());
-//           setState(() {
-//             _currentTabIndex = index;
-//             print(_currentTabIndex);
-//             //* 지금은 서치탭이 없죠!
-//           });
-//         },
-//         items: [
-//           BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-//           BottomNavigationBarItem(
-//               icon: Icon(IconData(0xe4a1, fontFamily: 'MaterialIcons')),
-//               label: '마이펫'),
-//           BottomNavigationBarItem(icon: Icon(Icons.settings), label: '설정'),
-//         ],
-//       ),
-//       body: _tabs[_currentTabIndex],

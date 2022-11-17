@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:porocci_app/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import "../enums/enum_auth_status.dart";
-import '../providers/provider_auth.dart';
-import '../providers/provider_shared_preferences.dart';
+import '../../enums/enum_auth_status.dart';
+import '../../providers/provider_auth.dart';
+import '../../providers/provider_shared_preferences.dart';
+import './widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -17,13 +19,12 @@ class LoginScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(40, 5, 40, 20),
+          padding: AppLayout.formPageContainerPadding,
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: const <Widget>[
               LoginEmailInput(),
               LoginPasswordInput(),
-              // AutoLoginBox(),
               LoginButton(),
               MoveToRegisterPageButton(),
             ],

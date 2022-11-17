@@ -9,4 +9,7 @@ class AppBox {
     bottomLeft: Radius.circular(40.0),
     bottomRight: Radius.circular(40.0),
   );
+
+  static const EdgeInsets qrButtonPadding =
+      EdgeInsets.symmetric(horizontal: 40, vertical: 20);
 }

@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:porocci_app/styles/styles.dart';
 
-import "../enums/enum_auth_status.dart";
-import "../providers/provider_auth.dart";
+import '../../enums/enum_auth_status.dart';
+import '../../providers/provider_auth.dart';
+import './widgets/widgets.dart';
 
 class RegisterScreen extends ConsumerWidget {
   const RegisterScreen({super.key});
@@ -15,7 +17,7 @@ class RegisterScreen extends ConsumerWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+          padding: AppLayout.formPageContainerPadding,
           child: Column(
             children: const <Widget>[
               RegisterEmailInput(),
