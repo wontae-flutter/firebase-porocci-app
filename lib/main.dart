@@ -13,7 +13,7 @@ Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
-
+  Paint.enableDithering = true;
   runApp(
     ProviderScope(
       child: MyApp(),
@@ -31,16 +31,22 @@ class MyApp extends StatelessWidget {
       title: 'Porocci',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // textTheme: Theme.of(context).textTheme.apply(
+        //       fontSizeFactor: 1.1,
+        //       fontSizeDelta: 2.0,
+        //     ),
       ),
       initialRoute: "/",
       routes: {
         "/": (context) => const SplashScreen(),
         "/home": (context) => const HomeScreen(),
         "/login": (context) => const LoginScreen(),
-        "/register": (context) => const RegisterScreen(),
+        "/user_register": (context) => const RegisterScreen(),
         "/user_page": (context) => const UserPageScreen(),
         //! 각각 펫아이디에 해줘야하는데, 요거는 넘버링하지않고 유저아이디 + 펫아이디가 합쳐져있어야 할 것 같아요.
+        "/pet_register": (context) => const PetRegisterScreen(),
         "/pet_tabs": (context) => const PetTabsScreen(),
+        "/qr": (context) => const QRScreen(),
       },
     );
   }

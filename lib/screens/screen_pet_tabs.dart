@@ -29,18 +29,44 @@ class _PetTabsScreenState extends State<PetTabsScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("pet name"),
-        bottom: TabBar(controller: _tabController, tabs: [
-          Tab(
-            text: "홈",
+        shape: Border(bottom: BorderSide(color: Colors.black26)),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        titleSpacing: 0,
+        title: Text("펫 프로필"),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20), child: Icon(Icons.settings)),
+        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 1.0,
+                color: Colors.black26,
+              ),
+              TabBar(
+                indicatorColor: Colors.black,
+                labelColor: Colors.black,
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    text: "홈",
+                  ),
+                  Tab(
+                    text: "리포트",
+                  ),
+                  Tab(
+                    text: "접종관리",
+                  ),
+                ],
+              ),
+            ],
           ),
-          Tab(
-            text: "리포트",
-          ),
-          Tab(
-            text: "접종관리",
-          ),
-        ]),
+        ),
       ),
       body: TabBarView(
         controller: _tabController,

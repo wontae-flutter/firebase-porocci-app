@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import "dart:async";
 
+import 'package:porocci_app/styles/styles.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -24,15 +26,25 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Colors.blue,
+          color: AppColor.porochiLogoColor,
           child: Center(
-            child: Text(
-              "POROCCI",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 5),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/logo/logo_rect.png",
+                  width: 80,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "POROCHI",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 5),
+                ),
+              ],
             ),
           ),
         ),

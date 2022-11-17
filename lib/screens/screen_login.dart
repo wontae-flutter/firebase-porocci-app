@@ -138,7 +138,7 @@ class MoveToRegisterPageButton extends StatelessWidget {
     final theme = Theme.of(context);
     return TextButton(
       onPressed: () {
-        Navigator.of(context).pushNamed("/register");
+        Navigator.of(context).pushNamed("/user_register");
       },
       child: Text(
         '이메일로 간단하게 회원가입 하기',

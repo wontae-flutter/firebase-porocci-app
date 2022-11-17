@@ -18,6 +18,7 @@ _$_Pet _$$_PetFromJson(Map<String, dynamic> json) => _$_Pet(
               ?.map((e) => e as String)
               .toList() ??
           const [""],
+      remarks: json['remarks'] as String? ?? "",
       reference:
           const DocumentReferenceJsonConverter().fromJson(json['reference']),
     );
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$_PetToJson(_$_Pet instance) => <String, dynamic>{
       'registernumber': instance.registernumber,
       'isNeutered': instance.isNeutered,
       'allergies': instance.allergies,
+      'remarks': instance.remarks,
       'reference':
           const DocumentReferenceJsonConverter().toJson(instance.reference),
     };

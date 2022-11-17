@@ -117,10 +117,7 @@ class HomeArea extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColor.homeScreenBackgroundColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40.0),
-          topRight: Radius.circular(40.0),
-        ),
+        borderRadius: AppBox.onlyTopCircularBorder,
       ),
       padding: EdgeInsets.fromLTRB(30, 50, 30, 40),
       child: Column(
@@ -146,6 +143,7 @@ class QRContainer extends StatelessWidget {
     //* OnGestureDectector()로 하면 되겠다
     return GestureDetector(
       onTap: () {
+        Navigator.of(context).pushNamed("/qr");
         print("QR 페이지로 넘어가세요!");
       },
       child: Container(
@@ -171,7 +169,7 @@ class QRContainer extends StatelessWidget {
             SizedBox(width: 10),
             Text(
               "QR 확인하기",
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+              style: AppText.homeScreenTitle,
             ),
           ],
         ),
@@ -196,7 +194,7 @@ class PetRegisterTitle extends StatelessWidget {
           SizedBox(width: 10),
           Text(
             "반려동물 등록",
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+            style: AppText.homeScreenTitle,
           ),
         ],
       ),
@@ -225,14 +223,19 @@ class PetRegisterContainer extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Icon(
-            IconData(0xee3c, fontFamily: 'MaterialIcons'),
-            size: 70,
-            color: Colors.black38,
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed("/pet_register");
+            },
+            child: Icon(
+              IconData(0xee3c, fontFamily: 'MaterialIcons'),
+              size: 70,
+              color: Colors.black38,
+            ),
           ),
           Text(
             "포로치 등록하기",
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+            style: AppText.homeScreenTitle,
           ),
           // SizedBox(height: 10),
           Text(

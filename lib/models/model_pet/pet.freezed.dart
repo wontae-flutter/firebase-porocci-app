@@ -27,7 +27,8 @@ mixin _$Pet {
   String get birthdate => throw _privateConstructorUsedError;
   int get registernumber => throw _privateConstructorUsedError; //* 중성화, 옵셔널
   bool get isNeutered => throw _privateConstructorUsedError;
-  List<String> get allergies => throw _privateConstructorUsedError; //* 알러지
+  List<String> get allergies => throw _privateConstructorUsedError;
+  String get remarks => throw _privateConstructorUsedError; //* 알러지
   DocumentReference<Object?>? get reference =>
       throw _privateConstructorUsedError;
 
@@ -50,6 +51,7 @@ abstract class $PetCopyWith<$Res> {
       int registernumber,
       bool isNeutered,
       List<String> allergies,
+      String remarks,
       DocumentReference<Object?>? reference});
 }
 
@@ -73,6 +75,7 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
     Object? registernumber = null,
     Object? isNeutered = null,
     Object? allergies = null,
+    Object? remarks = null,
     Object? reference = freezed,
   }) {
     return _then(_value.copyWith(
@@ -108,6 +111,10 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
           ? _value.allergies
           : allergies // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      remarks: null == remarks
+          ? _value.remarks
+          : remarks // ignore: cast_nullable_to_non_nullable
+              as String,
       reference: freezed == reference
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
@@ -131,6 +138,7 @@ abstract class _$$_PetCopyWith<$Res> implements $PetCopyWith<$Res> {
       int registernumber,
       bool isNeutered,
       List<String> allergies,
+      String remarks,
       DocumentReference<Object?>? reference});
 }
 
@@ -151,6 +159,7 @@ class __$$_PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$_Pet>
     Object? registernumber = null,
     Object? isNeutered = null,
     Object? allergies = null,
+    Object? remarks = null,
     Object? reference = freezed,
   }) {
     return _then(_$_Pet(
@@ -186,6 +195,10 @@ class __$$_PetCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$_Pet>
           ? _value._allergies
           : allergies // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      remarks: null == remarks
+          ? _value.remarks
+          : remarks // ignore: cast_nullable_to_non_nullable
+              as String,
       reference: freezed == reference
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
@@ -207,6 +220,7 @@ class _$_Pet implements _Pet {
       required this.registernumber,
       this.isNeutered = false,
       final List<String> allergies = const [""],
+      this.remarks = "",
       this.reference})
       : _allergies = allergies;
 
@@ -236,13 +250,16 @@ class _$_Pet implements _Pet {
     return EqualUnmodifiableListView(_allergies);
   }
 
+  @override
+  @JsonKey()
+  final String remarks;
 //* 알러지
   @override
   final DocumentReference<Object?>? reference;
 
   @override
   String toString() {
-    return 'Pet(breed: $breed, image: $image, name: $name, sex: $sex, birthdate: $birthdate, registernumber: $registernumber, isNeutered: $isNeutered, allergies: $allergies, reference: $reference)';
+    return 'Pet(breed: $breed, image: $image, name: $name, sex: $sex, birthdate: $birthdate, registernumber: $registernumber, isNeutered: $isNeutered, allergies: $allergies, remarks: $remarks, reference: $reference)';
   }
 
   @override
@@ -262,6 +279,7 @@ class _$_Pet implements _Pet {
                 other.isNeutered == isNeutered) &&
             const DeepCollectionEquality()
                 .equals(other._allergies, _allergies) &&
+            (identical(other.remarks, remarks) || other.remarks == remarks) &&
             (identical(other.reference, reference) ||
                 other.reference == reference));
   }
@@ -278,6 +296,7 @@ class _$_Pet implements _Pet {
       registernumber,
       isNeutered,
       const DeepCollectionEquality().hash(_allergies),
+      remarks,
       reference);
 
   @JsonKey(ignore: true)
@@ -304,6 +323,7 @@ abstract class _Pet implements Pet {
       required final int registernumber,
       final bool isNeutered,
       final List<String> allergies,
+      final String remarks,
       final DocumentReference<Object?>? reference}) = _$_Pet;
 
   factory _Pet.fromJson(Map<String, dynamic> json) = _$_Pet.fromJson;
@@ -324,6 +344,8 @@ abstract class _Pet implements Pet {
   bool get isNeutered;
   @override
   List<String> get allergies;
+  @override
+  String get remarks;
   @override //* 알러지
   DocumentReference<Object?>? get reference;
   @override
