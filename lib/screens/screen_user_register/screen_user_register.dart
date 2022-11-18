@@ -14,16 +14,24 @@ class RegisterScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("회원가입"),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
       ),
       body: Center(
         child: Padding(
           padding: AppLayout.formPageContainerPadding,
           child: Column(
             children: const <Widget>[
+              MainLogo(),
+              SizedBox(height: 15),
               RegisterEmailInput(),
               RegisterPasswordInput(),
               RegisterPasswordConfirmInput(),
+              SizedBox(height: 15),
               RegisterButton(),
+              SizedBox(height: 60),
+              ThirdPartyIconContainer(),
             ],
           ),
         ),

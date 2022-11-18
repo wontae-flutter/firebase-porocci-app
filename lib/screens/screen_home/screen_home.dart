@@ -34,18 +34,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           IconButton(
               onPressed: () {},
               icon: Icon(IconData(0xf237, fontFamily: 'MaterialIcons'))),
-          // IconButton(
-          //   onPressed: () {
-          //     loginStatus == AuthStatus.loggedIn
-          //         ? Navigator.of(context).pushNamed("/user_page")
-          //         : Navigator.of(context).pushNamed("/login");
-          //   },
-          //   icon: loginStatus == AuthStatus.loggedIn
-          //       ? Icon(
-          //           IconData(0xee35, fontFamily: 'MaterialIcons')) //* User Icon
-          //       : Icon(IconData(0xe3b2,
-          //           fontFamily: 'MaterialIcons')), //* Login Icon
-          // )
+          IconButton(
+            onPressed: () {
+              // loginStatus == AuthStatus.loggedIn
+              true
+                  ? Navigator.of(context).pushNamed("/user_page")
+                  : Navigator.of(context).pushNamed("/login");
+            },
+            icon:
+                // loginStatus == AuthStatus.loggedIn
+                true
+                    ? Icon(IconData(0xee35,
+                        fontFamily: 'MaterialIcons')) //* User Icon
+                    : Icon(IconData(0xe3b2,
+                        fontFamily: 'MaterialIcons')), //* Login Icon
+          )
         ],
       ),
       extendBodyBehindAppBar: true, //* body위에 appbar

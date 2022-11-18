@@ -15,18 +15,36 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("로그인"),
+        title: Text("로그인"),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
       ),
       body: Center(
         child: Padding(
           padding: AppLayout.formPageContainerPadding,
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const <Widget>[
+              MainLogo(),
+              SizedBox(height: 15),
               LoginEmailInput(),
               LoginPasswordInput(),
+              SizedBox(height: 15),
               LoginButton(),
+              SizedBox(height: 15),
               MoveToRegisterPageButton(),
+              SizedBox(height: 60),
+              ThirdPartyIconContainer(),
+              SizedBox(height: 30),
+              //todo 얘 어떻게 밑으로 내리지?
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CopyRightText(
+                      copyRightText: "Copyright(c) 가서뭐하지 All Rights Reserved."),
+                ),
+              )
             ],
           ),
         ),
@@ -76,10 +94,6 @@ class LoginPasswordInput extends ConsumerWidget {
   }
 }
 
-//! sharedProvider는 전역에 하나만 생성되니까 provider를 쓰는게 아니다
-//! stf의 initstate에서 어떻게 불러와서 쓸 것인지가 중요하지...
-// 삽질하고 있었다
-
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key});
 
@@ -126,6 +140,8 @@ class LoginButton extends ConsumerWidget {
   }
 }
 
+//! 자동로그인
+
 //! 아이디찾기
 
 //! 비밀번호재설정
@@ -149,37 +165,6 @@ class MoveToRegisterPageButton extends StatelessWidget {
   }
 }
 
-//! 써드파티로그인
-//* 애플
-//* 카카오
-//* 구글
-
-class ThirdPartyIcons extends StatelessWidget {
-  final String imagePath;
-  const ThirdPartyIcons({
-    super.key,
-    required this.imagePath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [],
-    );
-  }
-
-  Widget _thirdPartyIcon(imagePath) {
-    return SizedBox(
-      width: 100,
-      height: 100,
-      child: CircleAvatar(
-        backgroundImage: AssetImage(imagePath),
-      ),
-    );
-  }
-}
-
 class CopyRightText extends StatelessWidget {
   final String copyRightText;
   const CopyRightText({
@@ -189,6 +174,9 @@ class CopyRightText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(copyRightText);
+    return Text(
+      copyRightText,
+      style: TextStyle(color: Colors.grey),
+    );
   }
 }

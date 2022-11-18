@@ -140,12 +140,6 @@ class PetRegisterContainer extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.black54, fontSize: 18),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed("/pet_tabs");
-            },
-            child: Text("펫 프로필"),
-          ),
         ],
       ),
     );

@@ -63,13 +63,18 @@ class _PetCarouseContainerState extends State<PetCarouseContainer> {
           //* url로 받아오거나... 데이터베이스에서 가져올 수 있는 값으로 해야지
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.asset(
-                  fit: BoxFit.cover,
-                  width: 180,
-                  height: 180,
-                  imgAssetsPathList[itemIndex],
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/pet_tabs");
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset(
+                    fit: BoxFit.cover,
+                    width: 180,
+                    height: 180,
+                    imgAssetsPathList[itemIndex],
+                  ),
                 ),
               ),
               SizedBox(
@@ -105,16 +110,5 @@ class _PetCarouseContainerState extends State<PetCarouseContainer> {
         ),
       ),
     );
-  }
-}
-
-//! DB에서 유저가 가진 펫 마리수를 가져와서 뿌려줘야 합니다.
-
-class CarouselPet extends StatelessWidget {
-  const CarouselPet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
