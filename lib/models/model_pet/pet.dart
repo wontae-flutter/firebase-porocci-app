@@ -43,6 +43,7 @@ class Pet with _$Pet {
   //* fromJson, toJson을 동시에
   factory Pet.fromJson(Map<String, Object?> json) => _$PetFromJson(json);
 
+  //! toSnapShot은 어떻게?
   factory Pet.fromSnapshot(DocumentSnapshot document) {
     Map<String, dynamic> map = document.data() as Map<String, dynamic>;
     return Pet(

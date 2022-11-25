@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 import './screens/screens.dart';
+import "./styles/styles.dart";
 
 // final sharedPreferences =
 //     Provider<SharedPreferences>((_) => throw UnimplementedError());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Porocci',
       theme: ThemeData(
+        //! 색을 다 바꿔버려!!
         primarySwatch: Colors.blue,
         // textTheme: Theme.of(context).textTheme.apply(
         //       fontSizeFactor: 1.1,
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         "/home": (context) => const HomeScreen(),
         "/login": (context) => const LoginScreen(),
         "/user_register": (context) => const RegisterScreen(),
-        "/user_page": (context) => const UserPageScreen(),
+        "/mypage": (context) => const MyPageScreen(),
         //todo 각각 펫아이디에 해줘야하는데, 요거는 넘버링하지않고 유저아이디 + 펫아이디가 합쳐져있어야 할 것 같아요.
         "/pet_register": (context) => const PetRegisterScreen(),
         "/pet_tabs": (context) => const PetTabsScreen(),

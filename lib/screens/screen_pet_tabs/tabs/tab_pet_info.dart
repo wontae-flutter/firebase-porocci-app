@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../styles/styles.dart';
+import '../../../styles/styles.dart';
 
 Map<String, dynamic> petInfos = {
   "breed": "요크셔테리아",

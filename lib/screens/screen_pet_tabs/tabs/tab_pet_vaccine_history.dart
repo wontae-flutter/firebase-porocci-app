@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../styles/styles.dart';
+import '../../../styles/styles.dart';
 
 class PetVaccineHistoryTab extends ConsumerWidget {
   const PetVaccineHistoryTab({super.key});
@@ -13,7 +13,11 @@ class PetVaccineHistoryTab extends ConsumerWidget {
         padding: AppLayout.tabContainerPadding,
         child: Column(
           children: [
-            Text("예방접종 내역"),
+            Text(
+              "예방접종 내역",
+              style: AppText.homeScreenTitle,
+            ),
+            SizedBox(height: 15),
             // DataTable(columns: columns, rows: rows),
           ],
         ),

@@ -7,4 +7,6 @@ class AppLayout {
       EdgeInsets.fromLTRB(40, 20, 40, 80);
   static const EdgeInsets homeContentAreaPadding =
       EdgeInsets.fromLTRB(40, 20, 40, 20);
+  static const EdgeInsets endDrawbarPadding =
+      EdgeInsets.fromLTRB(20, 80, 20, 20);
 }

@@ -1,24 +1,16 @@
 //* Firebase와의 통신 등 인증 관련 회원 정보 전반을 다루는 Provider
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/model_login_field.dart';
 import '../models/model_register_field.dart';
-import '../enums/enum_auth_status.dart';
 import "../repositories/repository_auth.dart";
 
-//* Provider is the most basic of all providers. It exposes an object that never changes.
-//* 로그인하는 로직은 repository에 들어가고
-//* statusProvider를 해야되는것
-
-final authRepositoryProvider = Provider((ref) => AuthRepository(ref: ref));
+final authRepositoryProvider = Provider((ref) => AuthRepository());
 
 //! 역시 내가 생각했던게 맞았어
-
-// final authStateProvider =
-//     StateNotifierProvider<AuthRepository, AuthStatus>((ref) {
-//   final authService = ref.watch(authRepositoryProvider);
-//   return authService;
-// });
+final authStateProvider = StreamProvider<User?>((ref) {
+  return ref.read(authRepositoryProvider).authStateChange;
+});
 
 //? 어짜피 authRepositoryProvider의 메소드에서 .then으로 status를 받아버리니까
 //? 따로 만들어서 필요하진 않음? 정말?

@@ -1,12 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:porocci_app/styles/styles.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../enums/enum_auth_status.dart';
+import '../../styles/styles.dart';
 import '../../providers/provider_auth.dart';
-import '../../providers/provider_shared_preferences.dart';
 import './widgets/widgets.dart';
+import "../../enums/enum_auth_state.dart";
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -94,12 +92,14 @@ class LoginPasswordInput extends ConsumerWidget {
   }
 }
 
+//! user로 들어가는건 알겠는데, user가 수의사인지 아니면 일반사용자인지는 어떻게...?
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authRepository = ref.watch(authRepositoryProvider);
+    final authState = ref.watch(authStateProvider);
     final loginEmail = ref.watch(loginFieldNotifierProvider).email;
     final loginPassword = ref.watch(loginFieldNotifierProvider).password;
 
@@ -114,6 +114,7 @@ class LoginButton extends ConsumerWidget {
           ),
           child: const Text("로그인"),
           onPressed: () {
+            //! 이제 여기를 authStateProvider로 대체해야하는 것이다. 아니면 둘 다 있어야하나...?
             authRepository.loginWithEmail(loginEmail, loginPassword).then(
               (loginStatus) async {
                 if (loginStatus == AuthStatus.loggedIn) {

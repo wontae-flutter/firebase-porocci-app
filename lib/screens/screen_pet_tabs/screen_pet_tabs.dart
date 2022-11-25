@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../tabs/tabs_pet.dart';
+import 'tabs/tabs_pet.dart';
 
 class PetTabsScreen extends StatefulWidget {
   const PetTabsScreen({super.key});

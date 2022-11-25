@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:porocci_app/styles/styles.dart';
 
-import '../../enums/enum_auth_status.dart';
+import "../../styles/styles.dart";
+import "../../enums/enum_auth_state.dart";
 import '../../providers/provider_auth.dart';
 import './widgets/widgets.dart';
 

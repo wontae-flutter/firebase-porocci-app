@@ -1,16 +1,6 @@
-# porocci_app
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+마이페이지 만들어서 수의사냐 일반유저냐를 바꿔주는게 제일 중요하네...
+firebase authState는 홈페이지에서 아이콘 바꾸는데 잘 쓰일 수 있을 것 같고.
+firebase 익명은 대체 뭐야??

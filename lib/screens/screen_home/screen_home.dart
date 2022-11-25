@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../enums/enum_auth_status.dart';
+import '../../enums/enum_auth_state.dart';
 import '../../providers/provider_auth.dart';
 import '../../styles/styles.dart';
 import './widgets/widgets.dart';
@@ -17,15 +17,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    //! final userPets = ref.watch(userPetsProvider);
-    //! 요거는 리스트로 만들기 쉽다...
-    // final loginStatus = ref.watch(loginStatusProvider);
-    // 안되는 ㅜㅜ
+    final authRepository = ref.watch(authRepositoryProvider);
 
-    // print("loginStatus: $loginStatus");
-    //* 유저 로그인해서 마이페이지 or 로그인 해야함
-    // final loginStatus = ref.watch(loginStatusProvider);
-    // print("isLogin at HomeScreen: $isLogin");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -35,21 +28,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onPressed: () {},
               icon: Icon(IconData(0xf237, fontFamily: 'MaterialIcons'))),
           IconButton(
-            onPressed: () {
-              // loginStatus == AuthStatus.loggedIn
-              true
-                  ? Navigator.of(context).pushNamed("/user_page")
-                  : Navigator.of(context).pushNamed("/login");
+              onPressed: () => Navigator.of(context).pushNamed("/login"),
+              icon: Icon(IconData(0xe3b2, fontFamily: 'MaterialIcons'))),
+          Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: Icon(Icons.settings),
+              );
             },
-            icon:
-                // loginStatus == AuthStatus.loggedIn
-                true
-                    ? Icon(IconData(0xee35,
-                        fontFamily: 'MaterialIcons')) //* User Icon
-                    : Icon(IconData(0xe3b2,
-                        fontFamily: 'MaterialIcons')), //* Login Icon
-          )
+          ),
         ],
+      ),
+      endDrawer: Drawer(
+        child: Container(
+          padding: AppLayout.endDrawbarPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/mypage");
+                  },
+                  child: Text("마이페이지")),
+              LogoutButton(),
+            ],
+          ),
+        ),
       ),
       extendBodyBehindAppBar: true, //* body위에 appbar
       body: Container(
@@ -66,6 +73,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class LogoutButton extends ConsumerWidget {
+  const LogoutButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authRepository = ref.watch(authRepositoryProvider);
+
+    return TextButton(
+      onPressed: () {
+        authRepository.logout().then((_) => ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(content: Text("로그아웃 되었습니다."))));
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil("/home", (route) => false);
+      },
+      child: Text("Logout"),
     );
   }
 }

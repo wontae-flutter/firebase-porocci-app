@@ -7,8 +7,8 @@ export "screen_qr/screen_qr.dart";
 
 export 'screen_pet_register/screen_pet_register.dart';
 
-export 'screen_pet_tabs.dart';
+export 'screen_pet_tabs/screen_pet_tabs.dart';
 
 export 'screen_login/screen_login.dart';
 export 'screen_user_register/screen_user_register.dart';
-export "screen_user_page/screen_user_page.dart";
+export 'screen_my_page/screen_my_page.dart';
