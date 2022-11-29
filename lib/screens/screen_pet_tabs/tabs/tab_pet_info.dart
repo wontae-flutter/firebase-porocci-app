@@ -12,7 +12,7 @@ Map<String, dynamic> petInfos = {
   "registernumber": "410-11111111",
   "isNeutered": "안함",
   "allergies": "닭, 견과류, 호두, 참치",
-  "remarks": "귀여움"
+  "remarks": "나뭇가지를 잘 물고 다녀요."
 };
 
 class PetInfoTab extends StatelessWidget {
@@ -50,29 +50,17 @@ class PetInfoTab extends StatelessWidget {
                     padding: AppLayout.tabContentPadding,
                     child: SizedBox.expand(
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(petInfos["name"],
+                                  style: AppText.petCertificateTitle),
+                            ),
+                            SizedBox(height: 5),
                             Text.rich(TextSpan(
-                              text: "종: ",
-                              style: AppText.tableBody,
-                              children: [
-                                TextSpan(
-                                  text: petInfos["breed"],
-                                )
-                              ],
-                            )),
-                            Text.rich(TextSpan(
-                              text: "이름: ",
-                              style: AppText.tableBody,
-                              children: [
-                                TextSpan(
-                                  text: petInfos["name"],
-                                )
-                              ],
-                            )),
-                            Text.rich(TextSpan(
-                              text: "생년월일: ",
+                              text: "🎂",
                               style: AppText.tableBody,
                               children: [
                                 TextSpan(
@@ -104,27 +92,31 @@ class PetInfoTab extends StatelessWidget {
                               children: [
                                 TextSpan(
                                   text: petInfos["registernumber"],
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 )
                               ],
                             )),
-                            Text.rich(TextSpan(
-                              text: "알러지: ",
-                              style: AppText.tableBody,
-                              children: [
-                                TextSpan(
-                                  text: petInfos["allergies"],
-                                )
-                              ],
-                            )),
-                            Text.rich(TextSpan(
-                              text: "특이사항: ",
-                              style: AppText.tableBody,
-                              children: [
-                                TextSpan(
-                                  text: petInfos["remarks"],
-                                )
-                              ],
-                            )),
+                            SizedBox(height: 5),
+                            Text(
+                              "알러지: ${petInfos["allergies"]}",
+                              style: AppText.tableAccent,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 10),
+                              decoration: BoxDecoration(
+                                  color: AppColor.porochiLogoColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Text(
+                                petInfos["remarks"],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
                           ]),
                     ),
                   ))
@@ -133,17 +125,3 @@ class PetInfoTab extends StatelessWidget {
     );
   }
 }
-
-// Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-                        // Text(petInfos["breed"]),
-                        // Text(petInfos["name"]),
-                        // Text(petInfos["sex"]),
-                        // Text(petInfos["birthdate"]),
-                        // Text(petInfos["registernumber"]),
-                        // Text(petInfos["isNeutered"]),
-                        // Text(petInfos["allergies"]),
-                        // Text(petInfos["remarks"]),
-//                       ],
-//                     )

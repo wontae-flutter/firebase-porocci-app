@@ -25,7 +25,7 @@ class HomeArea extends StatelessWidget {
           SizedBox(height: 10),
           Expanded(
             //! 로그인 유무가 아니라 동물이 있는지 없는지 유무가 중요하다
-            child: true ? PetRegisterContainer() : PetCarouseContainer(),
+            child: false ? PetRegisterContainer() : PetCarouseContainer(),
           )
         ],
       ),

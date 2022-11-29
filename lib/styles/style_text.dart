@@ -13,9 +13,9 @@ abstract class AppText {
       height: 0.5,
       fontWeight: FontWeight.w600);
 
-  static const TextStyle tableHeader = TextStyle(
+  static const TextStyle tableAccent = TextStyle(
       color: Colors.black,
-      fontSize: 20,
+      fontSize: 18,
       height: 0.5,
       fontWeight: FontWeight.w600);
 

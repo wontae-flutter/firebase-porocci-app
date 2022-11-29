@@ -105,7 +105,7 @@ class PetCertificateTab extends StatelessWidget {
                           children: [
                             Text(
                               "접종차수",
-                              style: AppText.tableHeader,
+                              style: AppText.tableAccent,
                             ),
                             Row(children: [
                               Text(
@@ -117,7 +117,7 @@ class PetCertificateTab extends StatelessWidget {
                             ]),
                             Text(
                               "담당 수의사",
-                              style: AppText.tableHeader,
+                              style: AppText.tableAccent,
                             ),
                             Text(
                               "설동준",
@@ -131,7 +131,7 @@ class PetCertificateTab extends StatelessWidget {
                           children: [
                             Text(
                               "접종일자",
-                              style: AppText.tableHeader,
+                              style: AppText.tableAccent,
                             ),
                             Text(
                               "2022-10-11",
@@ -139,7 +139,7 @@ class PetCertificateTab extends StatelessWidget {
                             ),
                             Text(
                               "다음 예정일",
-                              style: AppText.tableHeader,
+                              style: AppText.tableAccent,
                             ),
                             Text(
                               "2023-02-02",
