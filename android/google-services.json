@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "329806922790-f4rm1uoc5pmsrhkto3eeevu8pqejr7jt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.porocci_app",
+            "certificate_hash": "d0ea607bf212c51ce8f01fc84b09d38047cf7ddd"
+          }
+        },
+        {
           "client_id": "329806922790-fpfmdhpv5hgl056nhbsqfjeauvfq0k01.apps.googleusercontent.com",
           "client_type": 3
         }

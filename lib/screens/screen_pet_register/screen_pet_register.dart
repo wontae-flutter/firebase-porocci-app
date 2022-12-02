@@ -2,7 +2,9 @@ import "package:flutter/material.dart";
 import 'package:camera/camera.dart';
 import "../../styles/styles.dart";
 
-//* stf
+//* 펫등록이.... 어?
+//! 여기서도 되어야하는거 아니야???
+// !시발
 class PetRegisterScreen extends StatefulWidget {
   const PetRegisterScreen({super.key});
 

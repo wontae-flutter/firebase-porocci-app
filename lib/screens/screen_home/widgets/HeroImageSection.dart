@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../styles/styles.dart';
 
 class HeroImageSection extends StatelessWidget {
   const HeroImageSection({super.key});
@@ -9,7 +10,7 @@ class HeroImageSection extends StatelessWidget {
       children: [
         HeroImage(),
         Positioned(
-          bottom: 20,
+          bottom: 30,
           right: 5,
           child: HeroImageEditButton(),
         )
@@ -36,7 +37,8 @@ class HeroImageEditButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: AppColor.blue),
         onPressed: () {
           print("홈커버 편집 - 미완성된 기능");
         },
@@ -46,7 +48,7 @@ class HeroImageEditButton extends StatelessWidget {
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w800,
-            decoration: TextDecoration.underline,
+            // decoration: TextDecoration.underline,
           ),
         ));
   }

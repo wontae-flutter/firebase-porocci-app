@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../styles/styles.dart';
 import 'PetRegisterContainer.dart';
-import 'PetCarouseContainer.dart';
+import 'PetListViewContainer.dart';
+import '../../../styles/styles.dart';
 
 class HomeArea extends StatelessWidget {
   //! 나중에 로그인!!!!!
@@ -16,16 +16,17 @@ class HomeArea extends StatelessWidget {
         color: AppColor.homeScreenBackgroundColor,
         borderRadius: AppBox.onlyTopCircularBorder,
       ),
-      padding: EdgeInsets.fromLTRB(30, 50, 30, 40),
+      padding: EdgeInsets.fromLTRB(30, 20, 30, 0),
       child: Column(
         children: [
           QRContainer(),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           PetRegisterTitle(),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
+          PetRegisterContainer(),
+          SizedBox(height: 20),
           Expanded(
-            //! 로그인 유무가 아니라 동물이 있는지 없는지 유무가 중요하다
-            child: false ? PetRegisterContainer() : PetCarouseContainer(),
+            child: PetListViewContainer(),
           )
         ],
       ),

@@ -38,6 +38,7 @@ class _MyPageScreenState extends ConsumerState<MyPageScreen> {
         title: Text("마이페이지"),
         foregroundColor: Colors.black,
         backgroundColor: Colors.transparent,
+        shape: Border(bottom: BorderSide(color: Colors.black26)),
         elevation: 0.0,
       ),
       // endDrawer: Drawer(),

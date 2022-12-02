@@ -57,7 +57,7 @@ class _PetTabsScreenState extends State<PetTabsScreen>
                     text: "리포트",
                   ),
                   Tab(
-                    text: "접종관리",
+                    text: "접종 관리",
                   ),
                 ],
               ),
