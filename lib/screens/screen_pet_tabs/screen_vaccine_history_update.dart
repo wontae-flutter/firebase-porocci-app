@@ -26,7 +26,7 @@ class VaccineHistoryUpdateScreen extends StatefulWidget {
 
 class _VaccineHistoryUpdateScreenState
     extends State<VaccineHistoryUpdateScreen> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool _formChanged = false;
 
   int selectedVaccineIndex = 0;

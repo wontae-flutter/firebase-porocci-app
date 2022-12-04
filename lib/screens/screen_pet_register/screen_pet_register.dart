@@ -13,7 +13,7 @@ class PetRegisterScreen extends StatefulWidget {
 }
 
 class _PetRegisterScreenState extends State<PetRegisterScreen> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool _formChanged = false;
   String dropdownInitialValue = "강아지";
   @override

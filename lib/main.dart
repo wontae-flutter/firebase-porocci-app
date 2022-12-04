@@ -14,7 +14,7 @@ Future<void> main() async {
   //! sharedPreferences처럼 객체가 Future일 때 futureProvider를 사용하기 싫을 때
 
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  Firebase.initializeApp();
   // FlutterError.demangleStackTrace = (StackTrace stack) {
   //   if (stack is stack_trace.Trace) return stack.vmTrace;
   //   if (stack is stack_trace.Chain) return stack.toTrace().vmTrace;
